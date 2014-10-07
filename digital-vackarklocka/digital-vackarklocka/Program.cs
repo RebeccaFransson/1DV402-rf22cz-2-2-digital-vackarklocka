@@ -13,7 +13,7 @@ namespace digital_vackarklocka
             //här ska koden som testar programmet komma
             //Console.BackgroundColor = ConsoleColor.DarkGreen;
 
-
+            
             string HorizontalLine = "═══════════════════════════════════════════════════════════";
 
             // test 1
@@ -47,6 +47,40 @@ namespace digital_vackarklocka
             Run(ac, 6);
             //Console.WriteLine(ac.ToString());
             Console.WriteLine(HorizontalLine);
+
+            //test 6
+            ViewTestHeader("Test 4\nTestar egenskaperna så att ett undantag kastas då tid och alarmtid tilldelas felaktiga värden.");
+            try 
+            {
+                ac.Hour = 24;
+            }
+            catch
+            {
+                ViewErrorMessage("Timmen är inte i intervallet 0-23");
+            }
+            try
+            {
+                ac.Minute = 60;
+            }
+            catch
+            {
+                ViewErrorMessage("Minuten är inte i intervallet 0-59");
+            } try
+            {
+                ac.AlarmHour = 24;
+            }
+            catch
+            {
+                ViewErrorMessage("Alarmtimmen är inte i intervallet 0-23");
+            } try
+            {
+                ac.AlarmMinute = 60;
+            }
+            catch
+            {
+                ViewErrorMessage("Alarmminuten är inte i intervallet 0-59");
+            }
+
         }
 
         static void Run(AlarmClock ac,int minutes)
