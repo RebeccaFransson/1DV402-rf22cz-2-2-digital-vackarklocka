@@ -81,6 +81,25 @@ namespace digital_vackarklocka
                 ViewErrorMessage("Alarmminuten är inte i intervallet 0-59");
             }
 
+            //test 7
+            ViewTestHeader("Test 4\nTestar konstruktorerna så att ett undantag kastas då tid och alarmtid tilldelas felaktiga värden.");
+            try
+            {
+                ac = new AlarmClock(24, 0);
+            }
+            catch
+            {
+                ViewErrorMessage("Timmen är inte i intervallet 0-23");
+            }
+
+            try
+            {
+                ac = new AlarmClock(0, 0, 24, 0 );
+            }
+            catch
+            {
+                ViewErrorMessage("Alarmtimmen är inte i intervallet 0-23");
+            }
         }
 
         static void Run(AlarmClock ac,int minutes)
@@ -95,8 +114,8 @@ namespace digital_vackarklocka
             {
                 if (ac.TickTock() == true)
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkBlue;
-                    Console.Write("BEEP!", ac.ToString());
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.Write("♫ ♫ ♫", ac.ToString());
                     Console.WriteLine("{0} BEEP! BEEP!", ac.ToString());
                     Console.ResetColor();
                 }
@@ -107,7 +126,7 @@ namespace digital_vackarklocka
 
         static void ViewErrorMessage(string message)
         {
-            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
             Console.ResetColor();
         }
