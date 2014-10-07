@@ -16,7 +16,7 @@ namespace digital_vackarklocka
 
 
 
-           private int AlarmHour //kontrollerar data
+           public int AlarmHour //kontrollerar data
            {
                get { return _alarmHour; }
                set
@@ -30,7 +30,7 @@ namespace digital_vackarklocka
 
            }
 
-           private int AlarmMinute//kontrollerar data
+           public int AlarmMinute//kontrollerar data
            {
                get { return _alarmMinute; }
                set
@@ -43,7 +43,7 @@ namespace digital_vackarklocka
                }
            }
 
-           private int Hour//kontrollerar data
+           public int Hour//kontrollerar data
            {
                get { return _hour; }
                set
@@ -56,7 +56,7 @@ namespace digital_vackarklocka
                }
            }
 
-           private int Minute//kontrollerar data
+           public int Minute//kontrollerar data
            {
                get { return _minute; }
                set
@@ -68,30 +68,60 @@ namespace digital_vackarklocka
                    _minute = value;
                }
            }
-        private AlarmClock() : this(0,0)
+        public AlarmClock() : this(0,0)
         {
             
         }
 
-        private AlarmClock(int hour, int minute) : this(hour, minute, 0, 0)
+        public AlarmClock(int hour, int minute) : this(hour, minute, 0, 0)
         {
             
         }
 
-        private AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
+        public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute) // parametrarna sätter värden till properties
         {
             Hour = hour;
-
+            Minute = minute;
+            AlarmHour = alarmHour;
+            AlarmMinute = alarmMinute;
         }
 
-        private bool TickTock()
+        public bool TickTock()
         {
-            throw new NotImplementedException();
+            if (Minute < 59)
+            {
+                Minute++;
+                if(Hour == 23)
+                {
+                    Hour = 0;
+                    Minute = 0;
+                }
+            }
+            else
+            {
+                Minute = 0;
+                
+                if(Hour == 23)
+                {
+                    Hour = 0;
+                }
+                else
+                {
+                    Hour++;
+                }
+            }
+            
+           return Minute==AlarmMinute && Hour==AlarmHour;
+          
         }
         
-        private string ToString()
+        public string ToString()
         {
-            throw new NotImplementedException();
+            //if(Minute < 10)
+            //{
+            //    return String.Format("{0}:0{1} <{2}:{3}>", Hour, Minute, AlarmHour, AlarmMinute);
+            //}
+            return String.Format("{0}:{1} <{2}:{3}>", Hour, Minute, AlarmHour, AlarmMinute);
         }
         
     }
