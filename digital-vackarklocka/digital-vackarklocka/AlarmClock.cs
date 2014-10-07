@@ -112,10 +112,6 @@ namespace digital_vackarklocka
         
         public string ToString() //tiden som kommer skrivas ut när man kallar på metoden
         {
-            //if(Minute < 10)
-            //{
-            //    return String.Format("{0}:0{1} <{2}:{3}>", Hour, Minute, AlarmHour, AlarmMinute);
-            //}
             return String.Format("{0,2}:{1:00} <{2}:{3:00}>", Hour, Minute, AlarmHour, AlarmMinute); //Här kommer alltid vara två st siffror, så om minutes är mindre än 10 kommer nollan skrivas dit innan
         }
         

@@ -11,22 +11,35 @@ namespace digital_vackarklocka
         static void Main(string[] args)
         {
             //här ska koden som testar programmet komma
-            //AlarmClock ac = new AlarmClock(10,32,14,24);
-            //for (int i = 0; i < 2000; i++)
-            //{
-            //    if (ac.TickTock() == true) {
-            //        Console.WriteLine("SANT!");
-            //    }
-            //}Console.BackgroundColor = ConsoleColor.DarkGreen;
+            //Console.BackgroundColor = ConsoleColor.DarkGreen;
 
 
-            //static string HorizontalLine()
-            
-            ViewTestHeader("Test 2\nTest av konstruktorn med två parametrar, (9, 42) ");
-            AlarmClock ac = new AlarmClock(9, 42);
+            string HorizontalLine = "═══════════════════════════════════════════════════════════";
 
+            // test 1
+            ViewTestHeader("Test 1\nTest av standardkonstruktorn. ");
+            AlarmClock ac = new AlarmClock();
             Console.WriteLine(ac.ToString());
+            Console.WriteLine(HorizontalLine);
+
+            // test 2
+            ViewTestHeader("Test 2\nTest av konstruktorn med två parametrar, (9, 42) ");
+            ac = new AlarmClock(9, 42);
+            Console.WriteLine(ac.ToString());
+            Console.WriteLine(HorizontalLine);
+
+            // test 3
+            ViewTestHeader("Test 3\nTest av konstruktorn med två parametrar, (13, 24, 7, 35) ");
+            ac = new AlarmClock(13, 24, 7, 35);
+            Console.WriteLine(ac.ToString());
+            Console.WriteLine(HorizontalLine);
             
+            // test 4
+            ViewTestHeader("Test 4\nStällder befintligt alarm-objekt till 23:58 och låter det gå 13 'minuter'.");
+            ac = new AlarmClock(23, 58, 7, 35);
+            Run(ac, 13);
+            //Console.WriteLine(ac.ToString());
+            Console.WriteLine(HorizontalLine);
         }
 
         static void Run(AlarmClock ac,int minutes)
@@ -36,6 +49,15 @@ namespace digital_vackarklocka
             Console.WriteLine(" ║      Väckarklockan URLED (TM)        ║ ");
             Console.WriteLine(" ╚══════════════════════════════════════╝ ");
             Console.ResetColor();
+
+            for (int i = 0; i < minutes; i++)
+            {
+                if(ac.TickTock()==true)
+                {
+
+                }
+                Console.WriteLine(ac.ToString());
+            }
         }
 
         static void ViewErrorMessage(string message)
