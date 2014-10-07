@@ -40,23 +40,34 @@ namespace digital_vackarklocka
             Run(ac, 13);
             //Console.WriteLine(ac.ToString());
             Console.WriteLine(HorizontalLine);
+
+            // test 5
+            ViewTestHeader("Test 4\nStällder befintligt alarm-objekt till 6:12 och låter det gå 6 'minuter'.");
+            ac = new AlarmClock(6, 12, 6, 15);
+            Run(ac, 6);
+            //Console.WriteLine(ac.ToString());
+            Console.WriteLine(HorizontalLine);
         }
 
         static void Run(AlarmClock ac,int minutes)
         {
             Console.BackgroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine(" ╔══════════════════════════════════════╗ ");
-            Console.WriteLine(" ║      Väckarklockan URLED (TM)        ║ ");
-            Console.WriteLine(" ╚══════════════════════════════════════╝ ");
+            Console.WriteLine(" ╔═════════════════════════════════════════════════════════╗ ");
+            Console.WriteLine(" ║      Väckarklockan Gjord Av Rebecca Fransson (TM)       ║ ");
+            Console.WriteLine(" ╚═════════════════════════════════════════════════════════╝ ");
             Console.ResetColor();
 
             for (int i = 0; i < minutes; i++)
             {
-                if(ac.TickTock()==true)
+                if (ac.TickTock() == true)
                 {
-
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.Write("BEEP!", ac.ToString());
+                    Console.WriteLine("{0} BEEP! BEEP!", ac.ToString());
+                    Console.ResetColor();
                 }
-                Console.WriteLine(ac.ToString());
+                else
+                { Console.WriteLine("{0,17}", ac.ToString()); }
             }
         }
 
