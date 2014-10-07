@@ -17,26 +17,32 @@ namespace digital_vackarklocka
             //    if (ac.TickTock() == true) {
             //        Console.WriteLine("SANT!");
             //    }
-            //}
+            //}Console.BackgroundColor = ConsoleColor.DarkGreen;
 
 
             //static string HorizontalLine()
-            ViewTestHeader("Test 1\nTest av standardkonstruktorn.");
-            AlarmClock ac = new AlarmClock();
             
-            Console.WriteLine(ac.ToString());
+            ViewTestHeader("Test 2\nTest av konstruktorn med två parametrar, (9, 42) ");
+            AlarmClock ac = new AlarmClock(9, 42);
 
+            Console.WriteLine(ac.ToString());
             
         }
 
         static void Run(AlarmClock ac,int minutes)
         {
-
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine(" ╔══════════════════════════════════════╗ ");
+            Console.WriteLine(" ║      Väckarklockan URLED (TM)        ║ ");
+            Console.WriteLine(" ╚══════════════════════════════════════╝ ");
+            Console.ResetColor();
         }
 
         static void ViewErrorMessage(string message)
         {
-
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
         static void ViewTestHeader(string header)
         {
