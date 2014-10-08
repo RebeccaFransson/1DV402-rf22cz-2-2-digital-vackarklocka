@@ -13,7 +13,7 @@ namespace digital_vackarklocka
             //här ska koden som testar programmet komma
             //Console.BackgroundColor = ConsoleColor.DarkGreen;
 
-            
+
             string HorizontalLine = "═══════════════════════════════════════════════════════════";
 
             // test 1
@@ -33,7 +33,7 @@ namespace digital_vackarklocka
             ac = new AlarmClock(13, 24, 7, 35);
             Console.WriteLine(ac.ToString());
             Console.WriteLine(HorizontalLine);
-            
+
             // test 4
             ViewTestHeader("Test 4\nStällder befintligt alarm-objekt till 23:58 och låter det gå 13 'minuter'.");
             ac = new AlarmClock(23, 58, 7, 35);
@@ -50,7 +50,7 @@ namespace digital_vackarklocka
 
             //test 6
             ViewTestHeader("Test 4\nTestar egenskaperna så att ett undantag kastas då tid och alarmtid tilldelas felaktiga värden.");
-            try 
+            try
             {
                 ac.Hour = 24;
             }
@@ -94,7 +94,7 @@ namespace digital_vackarklocka
 
             try
             {
-                ac = new AlarmClock(0, 0, 24, 0 );
+                ac = new AlarmClock(0, 0, 24, 0);
             }
             catch
             {
@@ -102,7 +102,7 @@ namespace digital_vackarklocka
             }
         }
 
-        static void Run(AlarmClock ac,int minutes)
+        static void Run(AlarmClock ac, int minutes)
         {
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" ╔═════════════════════════════════════════════════════════╗ ");
@@ -112,7 +112,7 @@ namespace digital_vackarklocka
 
             for (int i = 0; i < minutes; i++)
             {
-                if (ac.TickTock() == true)
+                if (ac.TickTock())
                 {
                     Console.BackgroundColor = ConsoleColor.Blue;
                     Console.Write("♫ ♫ ♫", ac.ToString());
